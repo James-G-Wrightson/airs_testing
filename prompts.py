@@ -51,7 +51,32 @@ where Explanation is the detailed reasoning that supports the Reply, based on ev
 # Criteria prompts #
 
 ## Criteria 1
-
+### 1.1
+#### V1
+criteria_prompt11 = """
+# Risk of Bias Assessment Criteria
+### 1.1) Confounder Possibility: 
+Could any variable that is not appropriately controlled affect both the assignment (or uptake) of the intervention and the outcome?
+Consider the following:
+- Some examples of confounders are Electricity use, Energy prices, Environmental attitudes, HH variables (e.g. Age, Gender, education level, income), Residence variables (e.g. Location, Size, Ownership; Seasonality etc.), Weather etc.
+- If the intervention was implemented only by self-selected partner organizations, agencies, utilities, or regions, respond with **yes**.
+- If statistically significant differences existed in pretreatment variables between control and treatment group(s), then respond with **no**.
+- If there are any structural, organizational, or contextual factors that affect both participation in the intervention and the outcome, respond **yes**.
+- If randomization occurred within units (e.g., within utilities), but the units themselves were not randomly selected, respond with **yes**.
+###
+"""
+#### V2
+criteria_prompt11_v2= """
+# Risk of Bias Assessment Criteria:
+ Is it possible for the impact of the exposure or the effectiveness of the intervention to be confounded in this study?
+"""
+#### V3
+criteria_prompt11_v3= """
+# Risk of Bias Assessment Criteria:
+Is it possible for the impact of the exposure or the effectiveness of the intervention to be confounded in this study?
+## Guidance:
+Determine whether the observed impact of the exposure or the effectiveness of the intervention could be confounded. Use causal reasoning principles and, if possible, infer the underlying causal structure. Identify any variables that could plausibly act as common causes of both the exposure/intervention and the outcome. Evaluate whether any unblocked backdoor paths exist that may introduce confounding. Based on this, provide a judgment on whether there is a risk that the observed effect could be confounded.
+"""
 ### 1.2
 #### V1
 criteria_prompt12 = """
@@ -78,7 +103,6 @@ Did the authors control for all the potential confounders?
 ## Guidance:
 Identify whether the authors controlled for all potential confounders that may affect both the intervention/exposure and the outcome. Use causal reasoning where possible. List any confounders explicitly mentioned or implied, describe how (if at all) they were controlled for (e.g., stratification, statistical adjustment, randomization), and provide a final judgment on whether control for confounding was sufficient according to causal inference principles.
 """
-
 ### 1.3
 #### V1
 criteria_prompt13 = """
@@ -95,31 +119,94 @@ Consider the following:
 """
 #### V2
 criteria_prompt13_v2 = """
-# Risk of Bias Assessment Criteria
-Confounder Justified Omission: Is there any justifiable reason for not controlling for all the potential confounders (so that omission of some of the potential confounders is unlikely to influence the assessment of the effectiveness or impact)?
-Consider the following:
-Answer **Yes** when there is evidence that omission of some of the potential confounders does not affect the assessment of effectiveness or impact. This may be the case if adjusting all potential confounders will lead to overadjustment, or an ‘instrumental variable’ is used for estimating the effectiveness or impact, etc. Instrumental variable is a variable that (1) is not associated with the confounder(s), (2) is associated with the intervention/exposure but (3) does not directly influence the outcome. If used appropriately, it enables valid estimation. 
+# Risk of Bias Assessment Criteria:
+Is there any justifiable reason for not controlling for all the potential confounders (so that omission of some of the potential confounders is unlikely to influence the assessment of the effectiveness or impact)?
 """
 #### V3
 criteria_prompt13_v3 = """
-# Risk of Bias Assessment Criteria
-Confounder Justified Omission: Is there any justifiable reason for not controlling for all the potential confounders (so that omission of some of the potential confounders is unlikely to influence the assessment of the effectiveness or impact)?
-Consider the following:
+# Risk of Bias Assessment Criteria:
+Is there any justifiable reason for not controlling for all the potential confounders (so that omission of some of the potential confounders is unlikely to influence the assessment of the effectiveness or impact)?
+## Guidance:
 Evaluate whether the study provides a justifiable reason for not controlling for certain potential confounders, such that their omission is unlikely to bias the assessment of the intervention or exposure's effect.
 Where applicable, infer the underlying causal structure and determine whether any uncontrolled backdoor paths are present. Identify any variables that could plausibly act as confounders but were not controlled for, and assess whether their omission is defensible based on causal reasoning, study design, or domain-specific justification.
 Consider whether the remaining adjustment set sufficiently blocks all major sources of bias, and conclude whether the residual risk of confounding is low and unlikely to affect the study's internal validity.
 """
 
-## Criteria 2
-
-### 2.3
+## Criteria 6
+### 6.1
 #### V1
-criteria_prompt23 = """
-# Risk of Bias Assessment Criteria
-
-### 2.3) Sample Exclusion
-After the start of the intervention/exposure or during the analysis, were any subjects or areas excluded or lost from the study or analysis? When some subjects or areas, or collected data are excluded, it might increase the risk of post-intervention/exposure selection bias.
+criteria_prompt61 = """
+### 6.1) DataSelective: 
+Are the reported effect estimate likely to only represent a part of measurements of the outcome, i.e. only a part of measured outcomes is reported. E.g., only 80 measured outcomes are reported when there are 100, or the effect estimate is based on 80 measured outcomes when there are 100. 
+Consider the following:  
+- Assume there is always enough information to make a judgment.  
+- Do not require the study to state selective reporting explicitly.  
+- Respond **Yes** if:  
+  - Some measured outcomes are described but not reported in results.  
+  - Only significant results are presented while nonsignificant ones are missing.  
+  - Subgroups, time points, or measured variables are mentioned but omitted from the analysis.  
+- Respond **No** if:  
+  - All outcomes the study describes as measured are reported.  
+  - Subgroup breakdowns or appliance-level data are simply disaggregations of the main outcome, not separate outcomes.  
+  - Engagement metrics, demographics, or qualitative focus groups are presented only as background or controls, not as prespecified outcomes.  
+###
+"""
+#### V2
+criteria_prompt61_v2  = """
+# Risk of Bias Assessment Criteria:
+Are the reported relevant outcome data (or effect estimate) likely to be of (or based on) selected measurements of the outcome?
+"""
+#### V3
+criteria_prompt61_v3 = """
+# Risk of Bias Assessment Criteria:
+Are the reported relevant outcome data (or effect estimate) likely to be of (or based on) selected measurements of the outcome?
+## Guidance:
+Examine the outcomes described in the study. First, determine whether multiple ways of measuring the same outcome were available (e.g., different scales, time points, or instruments). 
+Next, check whether only a subset of these was reported. 
+Finally, assess whether this selective reporting could bias the overall interpretation of the findings.
+"""
+### 6.2
+#### V1
+criteria_prompt62 = """
+# Risk of Bias Assessment Criteria:
+### 6.1) Data Subgroups:
+Are relevant outcome data likely to be unreported for some subgroup(s)? I.e., only outcome data on certain subjects or areas with certain characteristic(s) (e.g., taxonomic group) or in certain conditions (e.g., intervention intensity) are available.
 Consider the following:
-- If the final participated sample is lower than the total potential participation sample, then respond with **yes**. 
-- If the final participated sample is the same as the total potential participation sample, then respond with **no**.
+- Is there selective disclosure of findings from multiple subgroups or subpopulations? 
+###
+"""
+#### V2
+criteria_prompt62_v2 = """
+# Risk of Bias Assessment Criteria:
+Are relevant outcome data likely to be unreported for some subgroup(s)? 
+"""
+#### V3
+criteria_prompt62_v3 = """
+# Risk of Bias Assessment Criteria:
+Are relevant outcome data likely to be unreported for some subgroup(s)? 
+## Guidance:
+Begin by identifying all subgroups mentioned in the study design or population description. Next, match these against the subgroups for which outcomes are actually reported. If any subgroups are omitted from the outcome reporting, reason whether this could reflect selective disclosure aimed at supporting a specific conclusion.
+"""
+### 6.3
+#### V1
+criteria_prompt63 = """
+# Risk of Bias Assessment Criteria
+### 6.3) Data Causal:
+Is/are the analysis/analyses of the causal relationship of interest (intervention-outcome or exposure-outcome) likely to be partially reported?  
+Consider the following:
+- If there is selective disclosure of findings from multiple analyses, respond **yes**.
+- Otherwise, respond **no**. 
+###
+"""
+#### V2
+criteria_prompt63_v2 = """
+# Risk of Bias Assessment Criteria:
+Is/are the analysis/analyses of the causal relationship of interest (intervention-outcome or exposure-outcome) likely to be partially reported?
+"""
+#### V3
+criteria_prompt63_v3 = """
+# Risk of Bias Assessment Criteria:
+Is/are the analysis/analyses of the causal relationship of interest (intervention-outcome or exposure-outcome) likely to be partially reported?
+## Guidance:
+Identify the main causal question(s) the study aimed to answer. Then, review the statistical analyses used to evaluate those questions. Were multiple analytic approaches or models possible? Determine whether the reporting appears comprehensive or whether certain results were omitted, potentially due to non-significant or contradictory findings.
 """

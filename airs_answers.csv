@@ -1,13 +1,13 @@
-id,names,criteria_1_2,criteria_1_3
-1,"Allcott, H (2011).md",no,yes
-2,"Andor, Gerster, Peters, Schmidt, 2020.md",no,no
-3,"Asensio, OI; Delmas, MA (2016).md",yes,no
-4,"Ayres, Raseman, Shih, 2012.md",no,no
-5,"Bager, S; Mundaca, L (2017).md",no,no
-6,"Becker, LJ; Rabinowitz, VC; Seligman, C.md",no,yes
-7,"Carroll, J; Lyons, S; Denny, E (2014).md",no,yes
-8,"Houde, S; Todd, A; Sudarshan, A; Flora, JA; Ar...",no,no
-9,"Matsukawa, I. (2018).md",no,yes
-10,"Nguyen, TTK; Shimada, K; Ochi, Y; Matsumoto, T...",no,yes
-11,"Schleich, J (2013).md",yes,yes
-12,"Tiefenbeck, V (2013).md",yes,yes
+id,names,criteria_1_1,criteria_1_2,criteria_1_3,criteria_6_1,criteria_6_2,criteria_6_3
+1,"Allcott, H (2011).md",yes,no,yes,yes,yes,yes
+2,"Andor, Gerster, Peters, Schmidt, 2020.md",yes,no,no,yes,no,no
+3,"Asensio, OI; Delmas, MA (2016).md",yes,yes,no,no,no,no
+4,"Ayres, Raseman, Shih, 2012.md",yes,no,no,yes,yes,yes
+5,"Bager, S; Mundaca, L (2017).md",yes,no,no,yes,yes,yes
+6,"Becker, LJ; Rabinowitz, VC; Seligman, C.md",no,no,yes,no,no,no
+7,"Carroll, J; Lyons, S; Denny, E (2014).md",yes,no,yes,yes,yes,yes
+8,"Houde, S; Todd, A; Sudarshan, A; Flora, JA; Ar...",yes,no,no,yes,yes,yes
+9,"Matsukawa, I. (2018).md",yes,no,yes,yes,yes,no
+10,"Nguyen, TTK; Shimada, K; Ochi, Y; Matsumoto, T...",yes,no,yes,no,no,no
+11,"Schleich, J (2013).md",yes,yes,yes,yes,no,no
+12,"Tiefenbeck, V (2013).md",yes,yes,yes,yes,yes,yes
